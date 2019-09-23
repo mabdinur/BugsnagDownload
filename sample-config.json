@@ -1,0 +1,48 @@
+// *****************************************
+// rename file to config.json before running
+// *****************************************
+{
+	"organization": "0aa00a0000a00000000aaa00",
+	"output_file": "ErrorEvents.json",
+	"request_headers":
+	{
+		"Content-Type":"application/json",
+		"X-Version": "2",
+		"Authorization": "token 0000000-aaaaa-ccccc-00000-000000000"
+	},
+	"post_request_events_download": 
+	{
+	  "filters": {
+	    "error.status": [
+	      {
+	        "type": "eq",
+	        "value": "open"
+	      }
+	    ],
+	    "app.release_stage": [
+	      {
+	        "type": "eq",
+	        "value": "prod"
+	      }
+	    ],
+	    "app.context": [
+	      {
+	        "type": "eq",
+	        "value": "SalesforcePushingDataWorker@default"
+	      }
+	    ],
+	    "event.class": [
+	      {
+	        "type": "eq",
+	        "value": "Faraday::ClientError"
+	      }
+	    ],
+	    "event.since": [
+	      {
+	        "type": "eq",
+	        "value": "2d"
+	      }
+	    ]
+	  }
+	}
+}
